@@ -71,3 +71,19 @@ body {
 .Screan-forms-infos a{
   font-size: 13px;
 }
+
+.Button-screan-login{
+
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.Button-screan-login button{
+  background-color: rgb(0, 133, 42);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  width: 70px;
+  height: 30px;
+}

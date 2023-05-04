@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './Login/Login'
+import Login from './Screens/Login/Login'
 
 function App() {
 

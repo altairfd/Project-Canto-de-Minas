@@ -1,0 +1,73 @@
+body {
+  background-color: rgb(0, 133, 42);
+  max-width: 1920px;
+  max-height: 1080px;
+
+  font-family: 'Montserrat', sans-serif;
+}
+.Border-Screan-Login{
+  /* border: solid 3px black; */
+  width: 370px;
+  height: 750px;
+  margin-left: 36%;
+  margin-top: 100px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.40);
+  
+}
+.Screan-image{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  color: white;
+}
+.Screan-forms-infos{
+  background-color: white;
+  padding: 40px;
+  height: 400px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.Screan-forms-login h2{
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  
+
+}
+.Screan-forms-login h5{
+  margin-top: 0;
+  padding: 0;
+  color: rgba(0,0,0,0.70);
+
+}
+
+.Screan-forms-infos h2{
+  font-size: 30px;
+}
+
+.Screan-forms-infos h4{
+  margin-bottom: 10px;
+  font-size: small;
+  color: rgba(0,0,0,0.70);
+}
+
+.Screan-forms-infos input{
+  background-color: rgb(184, 184, 184);
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 200px;
+}
+
+.Screan-forms-infos a{
+  font-size: 13px;
+}

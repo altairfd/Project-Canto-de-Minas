@@ -1,6 +1,10 @@
 const mysql = require('../Connect');
 
 module.exports = {
+  /**
+   * Retorna todos as lojas no banco de dados
+   * @returns Json
+   */
   selectAll: () => {
     return new Promise((acept, reject) => {
       mysql.query('SELECT * FROM stores', (error, results) => {
@@ -13,12 +17,13 @@ module.exports = {
     });
   },
 
+  /**
+   * Os parametros que devem ser inseridos via url serão enviado para a base de dados local 
+   */
   createStore: (storeCnpj, storeName, storeAddress, storeNumber, storeRegion, managerID) => {
-    // Realize a inserção na tabela store usando os valores fornecidos
     const query = "INSERT INTO stores(storeCNPJ, storeName, storeAddress, storeNumber, storeRegion, managerID) VALUES (?, ?, ? ,? , ?, ?)";
     const values = [storeCnpj, storeName, storeAddress, storeNumber, storeRegion, managerID];
 
-    // Executando a consulta e confirme as alterações no banco de dados
     mysql.query(query, values, (error, results) => {
       if (error) {
         console.log("Erro ao registrado loja:", error);

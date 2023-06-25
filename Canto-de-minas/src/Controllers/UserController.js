@@ -15,19 +15,16 @@ module.exports = {
     res.json(data);
   },
 
+  
   registerUser: async (req, res) => {
-    let user_name = req.body.user_name;
-    let user_phone = req.body.user_phone; 
-    let password = req.body.password;
-    let access_level = req.body.access_level;
+    const { name, phone, password, acessLevel } = req.params;
 
-
-    console.log(req.body);
-    // Valide os dados de entrada, se necessário
-
-    UserService.createUser(user_name, user_phone, password, access_level);
-
-    // Retorne uma resposta adequada, se necessário
-    res.send("Usuário cadastrado com sucesso!");
+    try {
+      console.log(req.params)
+      await UserService.createUser(name, phone, password, acessLevel);
+      res.json({sucesse: true, });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
   }
 }

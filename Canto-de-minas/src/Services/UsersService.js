@@ -1,6 +1,10 @@
 const mysql = require('../Connect');
 
 module.exports = {
+  /**
+   * Retorna todos os usuarios registrados no banco de dados
+   * @returns json
+   */
   selectAll: () => {
     return new Promise((acept, reject) => {
       mysql.query('SELECT * FROM users', (error, results) => {
@@ -13,8 +17,10 @@ module.exports = {
     });
   },
 
+  /**
+   * Os parametros que devem ser inseridos via url serão enviado para a base de dados local
+   */
   createUser: (userName, userPhone, password, accessLevel) => {
-    // Realize a inserção na tabela users usando os valores fornecidos
     const query = "INSERT INTO users(user_name, user_phone, password, access_level) VALUES (?, ?, ?, ?)";
     const values = [userName, userPhone, password, accessLevel];
 

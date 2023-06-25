@@ -16,19 +16,14 @@ module.exports = {
   },
 
   registerStore: async (req, res) => {
-    let store_Cnpj = req.body.storeCNPJ;
-    let store_Name = req.body.storeName;
-    let store_Address = req.body.storeAddress;
-    let store_Number = req.body.storeNunber;
-    let store_Region = req.body.storeRegion;
-    let manager_ID = req.body.menagerID;
-
-    console.log(req.body.storeCNPJ);
-
-    // Valide os dados de entrada, se necessário
-    StoreSerivece.createStore(store_Cnpj, store_Name, store_Address, store_Number, store_Region, manager_ID);
-
-    // Retorne uma resposta adequada, se necessário
-    res.send("Loja registrada com sucesso!")
+    const {cnpj, name, ad, number, region, nanagerID} = req.params;
+    console.log(req.params);
+    try {
+      console.log(req.params)
+      await StoreSerivece.createStore(cnpj, name, ad, number, region, nanagerID);
+      res.json({sucesse: true, });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
   },
 }

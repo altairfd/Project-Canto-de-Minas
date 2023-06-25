@@ -1,8 +1,8 @@
-const ProductsSerivece = require('../Services/ProductsService');
+const ProductsService = require('../Services/ProductsService');
 
 module.exports = {
   selectAll: async (req, res) => {
-    let data = { erro: '', result: []};
+    let data = { erro: '', result: [] };
     let products = await ProductsSerivece.selectAll();
 
     for (let i in products) {
@@ -16,16 +16,13 @@ module.exports = {
   },
 
   registerProduct: async (req, res) => {
-    let product_code = req.params;
-    let product_name = req.params;
-    let product_Descrip = req.params;
-
-    console.log(req.params);
-
-    // Valide os dados de entrada, se necessário   
-    ProductsSerivece.createProduct(product_code, product_name, product_Descrip);
-
-    // Retorne uma resposta adequada, se necessário
-    res.send(`${req.params}`)
+    const { productCode, productName, productDescription } = req.params;
+    
+    try {
+      await ProductsService.createProduct(productCode, productName, productDescription);
+      res.json({sucesse: true, });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
   }
 }

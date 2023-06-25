@@ -15,14 +15,14 @@ module.exports = {
   },
 
   registerManager: async (req, res) => {
-    let manager_name = req.body.managerName;
+    const name = req.params;
 
-    console.log(req.body.managerName);
-
-    // Valide os dados de entrada, se necessário
-    ManagerService.createManager(manager_name);
-
-    // Retorne uma resposta adequada, se necessário
-    res.send("Representante registrada com sucesso!")
+    try {
+      console.log(req.params)
+      await ManagerService.createManager(name);
+      res.json({sucesse: true, });
+    } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+    }
   },
 }

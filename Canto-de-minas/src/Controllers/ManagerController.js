@@ -25,4 +25,27 @@ module.exports = {
       res.status(500).json({ success: false, error: error.message });
     }
   },
+
+  updateManager: async (req, res) => {
+    const {name, id} = req.params;
+
+    try {
+      await ManagerService.updateManager(name, id);
+      console.log(name, id)
+      res.send('Representante atualizado com sucesso')
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar o Representante.' });
+    };
+  },
+
+  deleteManager: async (req, res) => {
+    const {id} = req.params;
+
+    try {
+      await ManagerService.deleteManager(id);
+      res.send('Representante deletado com sucesso')
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao deletar Representante.', error});
+    };
+  }
 }

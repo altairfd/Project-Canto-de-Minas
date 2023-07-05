@@ -32,4 +32,31 @@ module.exports = {
       }
     });
   },
+
+  updateUser: async (Code, Name, Descp, iD) => {
+    const query = `UPDATE mogoose.products SET productCode = ?, productName = ?, productDescription = ? WHERE productID = ?`;
+    const values = [Code, Name, Descp, iD]
+
+    mysql.query(query, values, (error, result) => {
+      if (error) {
+        console.log("Error ao atualizar produto", error) 
+      } else {
+        console.log("Produto atualizado com sucesso!");
+      }
+    })
+  },
+
+  deleteProduct: async (id) => {
+    const query = `DELETE FROM mogoose.products WHERE productID = ?`;
+    const values = [id]
+
+    mysql.query(query, values, (error, results) => {
+      if (error) {
+        console.log("Error ao deletar produto", error)
+      } else {
+        console.log("Produto deletado com sucesso!")
+      }
+    })
+  }
+  
 }

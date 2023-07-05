@@ -32,4 +32,37 @@ module.exports = {
       }
     });
   },
+
+  /**
+   * Atualizando a tabela manager
+   * @param {MysqlID} managerId 
+   * @param {String} mewManagerName 
+   * @returns JSON
+   */
+  updateManager: async (managerName, managerID) => {
+
+    const query = `UPDATE mogoose.managers SET managerName = ? WHERE managerID = ?`;
+    const values = [managerName, managerID];
+ 
+    mysql.query(query, values, (error, results) => {
+      if (error) {
+        console.log("Erro ao atualizar representante:", error);
+      } else {
+        console.log("Representante atualizado com sucesso!", values);
+      }
+    });
+  },
+
+  deleteManager: async (managerID) => {
+    const query = `DELETE FROM mogoose.managers WHERE managerID = ?`;
+    const values = [managerID]
+    
+    mysql.query(query, values, (error, results) => {
+      if (error) {
+        console.log("Erro ao deletar representante:", error);
+      } else {
+        console.log("Representante deletado com sucesso!", values);
+      }
+    });
+  }
 }

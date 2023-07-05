@@ -1,4 +1,6 @@
+const { sync } = require('touch');
 const StoreSerivece = require('../Services/StoresService');
+const StoresService = require('../Services/StoresService');
 
 module.exports = {
   selectAll: async (req, res) => {
@@ -26,4 +28,27 @@ module.exports = {
       res.status(500).json({ success: false, error: error.message });
     }
   },
+
+  updateStore: async (req, res) => {
+    const {cnpj, name, ad, number, region, id} = req.params;
+
+    try {
+      await StoresService.updateStore(cnpj, name, ad, number, region, id);
+      console.log(cnpj, name, ad, number, region, id)
+      res.send('Loja atualizada com sucesso!');
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar o Loja.'});
+    }
+  },
+
+  deleteStore: async (req, res) => {
+    const {id} = req.params;
+
+    try {
+      await StoreSerivece.deleteStore(id);
+      res.send('Loja deletada com sucesso');
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao deletar a Loja.' });
+    }
+  }
 }

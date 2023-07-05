@@ -32,5 +32,31 @@ module.exports = {
         console.log("Usuário criado com sucesso!");
       }
     });
+  },
+
+  updateUder: async (userName, userPhone, password, accessLevel, iD) => {
+    const query = `UPDATE mogoose.users SET user_name = ?, user_phone = ?, password = ?, access_level = ? WHERE userID = ?`;
+    const values = [userName, userPhone, password, accessLevel, iD];
+
+    mysql.query(query, values, (error, results) => {
+      if (error) {
+        console.log("Erro ao atualizar Cliente:", error);
+      } else {
+        console.log("Cliente atualizado com sucesso!");
+      }
+    });
+  },
+
+  deleteUser: async (userID) => {
+    const query = `DELETE FROM mogoose.users WHERE userID = ?`
+    const values = [userID]
+
+    mysql.query(query, values, (error, results) => {
+      if (error) {
+        console.log("Erro ao deletar Usuário")
+      } else {
+        console.log("Usuário deletada com sucesso!")
+      }
+    });
   }
 }

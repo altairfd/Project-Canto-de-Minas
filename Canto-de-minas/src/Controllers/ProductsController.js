@@ -24,5 +24,29 @@ module.exports = {
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
     }
-  }
+  },
+
+  updateProduct: async (req, res) => {
+    const {pCode, pName, pDisc, id} = req.params;
+
+    try {
+      await ProductsService.updateUser(pCode, pName, pDisc, id);
+      res.send("Usuario atualizado com sucesso!")
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar o Usuario.'});
+    }
+  },
+  
+  deleteProduct: async (req, res) => {
+    const {id} = req.params;
+
+    try {
+      await ProductsService.deleteProduct(id);
+      console.log(id);
+      res.send('Produto deletado com sucesso')
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar o produtos.' });
+    }
+  },
+
 }

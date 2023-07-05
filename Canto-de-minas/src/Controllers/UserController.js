@@ -26,5 +26,27 @@ module.exports = {
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
     }
+  },
+
+  updateUder: async (req, res) => {
+    const {name, phone, pw, al, id} = req.params;
+
+    try{
+      await UserService.updateUder(name, phone, pw, al, id);
+      res.send('Usuario atualizado com sucesso');
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar o Usuárion.'});
+    };
+  },
+
+  deleteUser: async (req, res) => {
+    const {id} = req.params;
+
+    try{
+      await UserService.deleteUser(id);
+      res.send('Usuario deletado com sucesso');
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao deletar o Usuárion.'});
+    };
   }
 }

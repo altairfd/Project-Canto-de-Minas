@@ -21,7 +21,7 @@ module.exports = {
    * Os parametros que devem ser inseridos via url serão enviado para a base de dados local 
    */
   createManager: (managerName) => {
-    const query = "INSERT INTO managers(managerName) VALUES (?)";
+    const query = "INSERT INTO mogoose.managers(managerName) VALUES (?)";
     const values = [managerName];
 
     mysql.query(query, values, (error, results) => {

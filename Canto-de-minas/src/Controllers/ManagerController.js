@@ -15,7 +15,7 @@ module.exports = {
   },
 
   registerManager: async (req, res) => {
-    const name = req.params;
+    const {name} = req.params;
 
     try {
       console.log(req.params)

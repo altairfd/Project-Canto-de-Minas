@@ -1,11 +1,9 @@
-const { sync } = require('touch');
-const StoreSerivece = require('../Services/StoresService');
 const StoresService = require('../Services/StoresService');
 
 module.exports = {
   selectAll: async (req, res) => {
     let data = { erro: '', result: []};
-    let stores = await StoreSerivece.selectAll();
+    let stores = await StoresService.selectAll();
 
     for (let i in stores) {
       data.result.push({
@@ -22,7 +20,7 @@ module.exports = {
     console.log(req.params);
     try {
       console.log(req.params)
-      await StoreSerivece.createStore(cnpj, name, ad, number, region, nanagerID);
+      await StoresService.createStore(cnpj, name, ad, number, region, nanagerID);
       res.json({sucesse: true, });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
